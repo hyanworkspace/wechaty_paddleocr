@@ -1,0 +1,58 @@
+export WECHATY_PUPPET="wechaty-puppet-padlocal"
+export WECHATY_PUPPET_PADLOCAL_TOKEN="puppet_padlocal_abaeb7953e08418e97bbda1326bdb6f9"
+npm install qrcode-terminal --save
+npm install wechaty
+npm install wechaty-puppet-wechat --save // 这个依赖是关键
+export WECHATY_PUPPET=wechaty-puppet-wechat // 这里也是关键，需要配置你使用的puppet
+
+# 设置环境变量
+
+export WECHATY_LOG="verbose"
+export WECHATY_PUPPET="wechaty-puppet-padlocal"
+export WECHATY_PUPPET_PADLOCAL_TOKEN="puppet_padlocal_abaeb7953e08418e97bbda1326bdb6f9"
+
+export WECHATY_PUPPET_SERVER_PORT="9001"
+export WECHATY_TOKEN="d1027e0a-cd4d-458e-83d5-a381c70b0726"
+
+docker run -ti \
+  --name wechaty_puppet_service_token_gateway \
+  --rm \
+  -e WECHATY_LOG \
+  -e WECHATY_PUPPET \
+  -e WECHATY_PUPPET_PADLOCAL_TOKEN \
+  -e WECHATY_PUPPET_SERVER_PORT \
+  -e WECHATY_TOKEN \
+  -p "$WECHATY_PUPPET_SERVER_PORT:$WECHATY_PUPPET_SERVER_PORT" \
+  wechaty/wechaty:0.56
+
+export WECHATY_PUPPET_SERVER_PORT="9001"
+export WECHATY_TOKEN="d1027e0a-cd4d-458e-83d5-a381c70b0726"
+
+docker run -ti \
+  --name wechaty_puppet_service_token_gateway \
+  --rm \
+  -e WECHATY_LOG \
+  -e WECHATY_PUPPET \
+  -e WECHATY_PUPPET_PADLOCAL_TOKEN \
+  -e WECHATY_PUPPET_SERVER_PORT \
+  -e WECHATY_TOKEN \
+  wechaty/wechaty
+
+ff385f463f67e3cc3ab4a4abec9f33eaabfa4539423bf45013fe385c4f0b2f73
+623b88f3be382218d6cc0c124ff9498174dbc2129b245c91f4ac8dbbc19bd243
+
+# check
+curl https://api.chatie.io/v0/hosties/d1027e0a-cd4d-458e-83d5-a381c70b0726
+
+
+
+export WECHATY_PUPPET="wechaty-puppet-service"
+export WECHATY_PUPPET_SERVICE_TOKEN="puppet_padlocal_abaeb7953e08418e97bbda1326bdb6f9"
+export WECHATY_PUPPET_SERVICE_ENDPOINT="88.138.1.252:9001"
+
+# git clone https://github.com/wj-Mcat/python-wechaty-getting-started
+cd python-wechaty-getting-started
+
+python examples/ding-dong-bot.py
+
+make bot
